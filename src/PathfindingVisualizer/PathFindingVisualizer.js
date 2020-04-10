@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Node from './Node/Node';
+import {dijkstra} from '../algorithm/dijkstra'
 
 export default class PathFindingVisualizer extends Component {
   constructor(props) {

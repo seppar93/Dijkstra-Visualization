@@ -5,12 +5,6 @@ export function dijkstra(grid, startNode, finishNode) {
 
   const unvisitedNodes = getAllNodes(grid);
 
-  // Edge case
-  if(!startNode || !finishNode || startNode === finishNode) {
-    return false
-  }
-  nodes[startNode].distance = 0;
-  const unvisitedNodes = nodes.slice();
   // use min heap for data structure
   while(!!unvisitedNodes.length) {
     sortNodesByDistance(unvisitedNodes)
