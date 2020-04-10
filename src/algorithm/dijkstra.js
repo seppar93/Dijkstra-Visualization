@@ -1,5 +1,4 @@
 
-
 export function dijkstra(grid, startNode, finishNode) {
   const visitedNodesInOrder=[]; // used for visualizing path
   startNode.distance = 0;
@@ -15,11 +14,17 @@ export function dijkstra(grid, startNode, finishNode) {
   // use min heap for data structure
   while(!!unvisitedNodes.length) {
     sortNodesByDistance(unvisitedNodes)
-    closestNode = unvisitedNodes.unshift();
+    closestNode = unvisitedNodes.shift();
 
+    if(closestNode.isWall) continue;
+
+    // path is blocked display path
+    if(closestNode.distance === Infinity) return visitedNodesInOrder;
     closestNode.isVisited = true;
-    if(closestNode === finishNode) return "success!!";
-    updateNeighbors(closestNode, grid);
+    visitedNodesInOrder.push(closestNode);
+    // path find display path
+    if(closestNode === finishNode) return visitedNodesInOrder;
+    updateUnvisitedNeighbors(closestNode, gird);
   }
 }
 
