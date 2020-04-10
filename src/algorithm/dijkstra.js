@@ -50,12 +50,6 @@ function getUnvisitedNeighbors(node, grid) {
   return neighbors.filter(neighbor => !neighbor.isVisited);
 }
 
-function getNeighbors(node, gird) {
-  const neighbors = [];
-  // use min heap for data structure
-
-
-}
 
 function getAllNodes(grid){
   const nodes = [];
@@ -65,4 +59,15 @@ function getAllNodes(grid){
     }
   }
   return nodes;
+}
+
+// used for displaying node path after the path is finished;
+export function getNodesInShortestPathOrder(finishNode) {
+  const nodesInShortestPathOrder = [];
+  let currentNode = finishNode;
+  while(currentNode !== null) {
+    nodesInShortestPathOrder.unshift(currentNode);
+    currentNode = currentNode.previousNode;
+  }
+  return nodesInShortestPathOrder
 }
