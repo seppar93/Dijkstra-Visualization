@@ -1,36 +1,40 @@
 import React, { Component } from 'react';
 import Node from './Node/Node';
 import {dijkstra} from '../algorithm/dijkstra'
+import './PathFindingVisualizer.css';
+
+const START_NODE_ROW = 10;
+const START_NODE_COL = 15;
+const FINISH_NODE_ROW = 10;
+const FINISH_NODE_COL = 45
 
 export default class PathFindingVisualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodes: []
+      gird: []
     };
   }
 
   componentDidMount() {
-    // when the component mounts loop through the grid and add the array into state
-    const nodes = [];
-    for (let row = 0; row < 20; row++) {
-      const currentRow = [];
-      for (let col = 0; col < 50; col++) {
-        const currentNode = {
-          col,
-          row,
-          isStart: row === 10 && col === 5,
-          isFinish: row === 10 && col === 45
-        };
-        currentRow.push(currentNode);
-      }
-      nodes.push(currentRow);
-    }
-    this.setState({ nodes });
+    const gird = getInitialGrid();
+    this.setState({grid})
+  }
+  visualizeDijkstra(){
+    const {grid} = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNide = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodesInOrder = dijkstra(grid, startNode, finishNide);
+    console.log(visitNodesInOrder);
   }
 
   render() {
+    const {grid} = this.state;
     return (
+      <>
+      <button onClick={() => this.visualizeDijkstra()}>
+        Visualize Algorithm
+      </button>
       <div className='grid'>
         {this.state.nodes.map((row, rowIndex) => {
           return (
@@ -52,6 +56,7 @@ export default class PathFindingVisualizer extends Component {
           );
         })}
       </div>
+      </>
     );
   }
 }
