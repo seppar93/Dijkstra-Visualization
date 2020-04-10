@@ -1,11 +1,11 @@
-const node = {
-  row,
-  col,
-  isVisited,
-  distance
-};
 
-function dijkstra(grid, startNode, finishNode) {
+
+export function dijkstra(grid, startNode, finishNode) {
+  const visitedNodesInOrder=[]; // used for visualizing path
+  startNode.distance = 0;
+
+  const unvisitedNodes = getAllNodes(grid);
+
   // Edge case
   if(!startNode || !finishNode || startNode === finishNode) {
     return false
@@ -39,4 +39,14 @@ function getNeighbors(node, gird) {
   // use min heap for data structure
 
 
+}
+
+function getAllNodes(grid){
+  const nodes = [];
+  for (const row of grid) {
+    for (const node of row) {
+      nodes.push(node);
+    }
+  }
+  return nodes;
 }
