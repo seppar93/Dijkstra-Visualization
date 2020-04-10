@@ -15,7 +15,6 @@ export default class PathFindingVisualizer extends Component {
     for (let row = 0; row < 20; row++) {
       const currentRow = [];
       for (let col = 0; col < 50; col++) {
-        // currentRow.push([])
         const currentNode = {
           col,
           row,
@@ -36,10 +35,13 @@ export default class PathFindingVisualizer extends Component {
           return (
             <div key={rowIndex}>
               {row.map((node, nodeIndex) => {
+                const {isStart, isFinish} = node;
+                 
                 return (
                   <Node
                     key={nodeIndex}
-                    isStart={true}
+                    isStart={isStart}
+                    isFinish={isFinish}
                     test={'as'}
                     test={'asss'}>
                     </Node>
