@@ -36,12 +36,12 @@ export default class PathFindingVisualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gird: [],
+      grid: [],
     };
   }
 
   componentDidMount() {
-    const gird = getInitialGrid();
+    const grid = getInitialGrid();
     this.setState({ grid });
   }
   visualizeDijkstra() {
@@ -49,7 +49,6 @@ export default class PathFindingVisualizer extends Component {
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNide = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNide);
-    console.log(visitNodesInOrder);
   }
 
   render() {
