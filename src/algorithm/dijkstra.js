@@ -19,7 +19,7 @@ export function dijkstra(grid, startNode, finishNode) {
     visitedNodesInOrder.push(closestNode);
     // path find display path
     if (closestNode === finishNode) return visitedNodesInOrder;
-    updateUnvisitedNeighbors(closestNode, gird);
+    updateUnvisitedNeighbors(closestNode, grid);
   }
 }
 
